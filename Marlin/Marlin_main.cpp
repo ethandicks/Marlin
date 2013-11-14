@@ -1581,6 +1581,7 @@ void process_commands()
         }
       }
      break;
+#if EXTRUDERS > 0
     case 104: // M104
       if(setTargetedHotend(104)){
         break;
@@ -1821,6 +1822,7 @@ void process_commands()
           break;
       #endif //HEATER_2_PIN
     #endif
+#endif // EXTRUDERS > 0
 
     #if defined(PS_ON_PIN) && PS_ON_PIN > -1
       case 80: // M80 - Turn on Power Supply
@@ -2359,6 +2361,7 @@ void process_commands()
     }
     break;
 	#endif
+#if EXTRUDERS > 0
     case 303: // M303 PID autotune
     {
       float temp = 150.0;
@@ -2372,6 +2375,7 @@ void process_commands()
       PID_autotune(temp, e, c);
     }
     break;
+#endif // EXTRUDERS > 0
     case 400: // M400 finish all moves
     {
       st_synchronize();
