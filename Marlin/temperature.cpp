@@ -34,6 +34,12 @@
 #include "temperature.h"
 #include "watchdog.h"
 
+#if EXTRUDERS < 1
+void tp_init()        {} // dummy code because there are no temp sensors to manage
+void manage_heater()  {} // dummy code because there are no heaters to manage
+void disable_heater() {} // dummy code because there are no heaters to disable
+#else
+
 //===========================================================================
 //=============================public variables============================
 //===========================================================================
@@ -1304,4 +1310,4 @@ float unscalePID_d(float d)
 
 #endif //PIDTEMP
 
-
+#endif //EXTRUDERS < 1
